@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אבן דרך - אודות</title>
+    <style>
+        /* גופנים */
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap');
+        
+        /* סגנון בסיסי */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Heebo', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            direction: rtl;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+        
+        /* תפריט ניווט */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-left: 10px;
+        }
+        
+        .logo h1 {
+            color: #1a237e;
+            font-size: 1.8rem;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+        }
+        
+        .nav-links a {
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #3f51b5;
+        }
+        
+        /* תוכן ראשי */
+        main {
+            padding-top: 80px;
+        }
+        
+        section {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            color: #1a237e;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background: #3f51b5;
+        }
+        
+        h3 {
+            color: #3f51b5;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        /* סגנון דף אודות */
+        .about-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/400') center/cover no-repeat;
+            height: 300px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: -50px;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .about-section {
+            margin-bottom: 3rem;
+        }
+        
+        .about-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin: 3rem 0;
+        }
+        
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            display: block;
+        }
+        
+        .highlight-box {
+            background: #f5f5f5;
+            border-right: 3px solid #3f51b5;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .highlight-box h3 {
+            margin-top: 0;
+        }
+        
+        .approach-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            border-top: 3px solid #3f51b5;
+        }
+        
+        .approach-card h3 {
+            margin-top: 0;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-box {
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-10px);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #3f51b5;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-text {
+            font-weight: bold;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #3f51b5;
+            top: 0;
+            bottom: 0;
+            right: 50%;
+            margin-right: -2px;
+        }
+        
+        .container-right {
+            right: 50%;
+            padding: 10px 40px 10px 0;
+        }
+        
+        .container-left {
+            right: 0%;
+            padding: 10px 0 10px 40px;
+        }
+        
+        .timeline-container {
+            position: relative;
+            width: 50%;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: 50%;
+            top: 20px;
+            background-color: white;
+            border: 4px solid #3f51b5;
+            border-radius: 50%;
+            z-index: 1;
+            transform: translateX(-50%);
+        }
+        
+        .container-right::after {
+            right: -12px;
+        }
+        
+        .container-left::after {
+            left: -8px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #3f51b5;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: #1a237e;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .features-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .features-list li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-right: 2rem;
+        }
+        
+        .features-list li::before {
+            content: "✓";
+            color: #3f51b5;
+            position: absolute;
+            right: 0;
+            font-weight: bold;
+        }
+        
+        /* פוטר */
+        footer {
+            background: #1a237e;
+            color: #fff;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: right;
+        }
+        
+        .footer-section h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: #fff;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        
+        .footer-social {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 1rem;
+        }
+        
+        .footer-social a {
+            color: #fff;
+            margin-left: 1rem;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-social a:hover {
+            opacity: 1;
+        }
+        
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* אפקטים של מוזיקה ותווים */
+        .music-notes {
+            position: absolute;
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* אנימציה לתווים */
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0);
+            }
+        }
+        
+        .floating-note {
+            position: absolute;
+            opacity: 0.6;
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        .floating-note:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-note:nth-child(2) {
+            top: 40%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+        
+        .floating-note:nth-child(3) {
+            top: 60%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+        
+        .floating-note:nth-child(4) {
+            top: 30%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+        
+        /* הגלילה חלקה */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* מדיה קוורי */
+        @media (max-width: 991px) {
+            .about-grid,
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::after {
+                right: 31px;
+            }
+            
+            .container-right {
+                right: 0%;
+                width: 100%;
+                padding-right: 70px;
+                padding-left: 0;
+            }
+            
+            .container-left {
+                right: 0%;
+                width: 100%;
+                padding-right: 70px;
+                padding-left: 0;
+            }
+            
+            .container-right::after, 
+            .container-left::after {
+                right: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- תפריט ניווט -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>אבן דרך</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">בית</a></li>
+                <li><a href="index.html#services">שירותים</a></li>
+                <li><a href="products.html">מוצרים</a></li>
+                <li><a href="about.html">אודות</a></li>
+                <li><a href="contact.html">צור קשר</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- תוכן ראשי - דף אודות -->
+    <main>
+        <!-- תווי מוזיקה מרחפים -->
+        <div class="floating-note">♪</div>
+        <div class="floating-note">♫</div>
+        <div class="floating-note">♩</div>
+        <div class="floating-note">♬</div>
+        
+        <!-- קטע גיבור -->
+        <section class="about-hero">
+            <h2>הסיפור שלי</h2>
+            <p>מסע מוזיקלי רוחני המחבר בין מסורת לחדשנות בחינוך</p>
+        </section>
+        
+        <!-- תוכן אודות -->
+        <div class="about-container">
+            <div class="about-section">
+                <h2>איך הכל התחיל</h2>
+                
+                <div class="about-grid">
+                    <div class="about-image">
+                        <img src="/api/placeholder/500/350" alt="תמונה שלי">
+                    </div>
+                    <div>
+                        <p>כבר בגיל צעיר התחברתי לעולם החזנות והניגון. הייתי מקשיב בהתפעמות לחזנים בבית הכנסת, ומנסה לחקות את הקולות והמנגינות הייחודיות. המוזיקה והמסורת היהודית היו תמיד חלק בלתי נפרד מחיי, ושילבתי אותן באופן טבעי בדרכי החינוכית.</p>
+                        
+                        <p>לפני כעשור התחלתי ללמד את בני הקהילה שלי לקריאה בתורה לקראת בר המצווה. במהרה גיליתי שיש פער עצום בין שיטות הלימוד המסורתיות לבין הצרכים של הילדים המודרניים. ראיתי איך ילדים מוכשרים מתקשים להתחבר לטקסט העתיק, לא בגלל חוסר יכולת, אלא בגלל חוסר בשיטת לימוד חווייתית ומותאמת.</p>
+                        
+                        <div class="highlight-box">
+                            <h3>החזון שלי</h3>
+                            <p>להפוך את תהליך הלמידה לקראת בר מצווה מאתגר מפחיד למסע מעצים, משמעותי ומהנה, תוך שמירה על דיוק וכבוד למסורת.</p>
+                        </div>
+                        
+                        <p>מאז לימדתי עשרות ילדים, כל אחד עם הסיפור האישי שלו וצרכיו הייחודיים. ליוויתי אותם בדרך אל רגע העלייה לתורה, וראיתי איך החוויה הזו הופכת ממשימה מאיימת לחוויה מעצימה, שמשנה את תפיסתם לגבי היהדות והמסורת.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-section">
+                <h2>הגישה החינוכית שלי</h2>
+                
+                <p>במהלך השנים פיתחתי שיטת לימוד ייחודית המשלבת בין הדיוק המסורתי לבין חוויית למידה מודרנית. אני מאמין שלפני שמתחילים ללמוד את הטעמים, חשוב להבין את יסודות הקריאה הנכונה, להפנים את החשיבות של דיוק בהגייה, ולהבין את המשמעות העמוקה של המילים.</p>
+                
+                <div class="approach-card">
+                    <h3>גישה ראשונה: קריאה בתורה אישית</h3>
+                    <p>גישה זו מיועדת לילדים שמעוניינים ללמוד לקרוא את פרשת בר המצווה שלהם באופן מדויק ומכובד. אנחנו מתמקדים בפרשה הספציפית שלהם, ומבינים לעומק את המילים, את הטעמים ואת המשמעות. </p>
+                    
+                    <ul class="features-list">
+                        <li>התמקדות ביסודות ההגייה הנכונה</li>
+                        <li>בניית ביטחון הדרגתי דרך הצלחות קטנות</li>
+                        <li>הבנת המשמעות של המילים והפסוקים</li>
+                        <li>תרגול מדויק של הטעמים והמנגינה</li>
+                        <li>עבודה על ביטחון בעמידה מול קהל</li>
+                    </ul>
+                </div>
+                
+                <div class="approach-card">
+                    <h3>גישה שנייה: הכשרת בעל קורא</h3>
+                    <p>גישה זו מיועדת לילדים עם כישרון וחיבור מיוחד לקריאה בתורה, המעוניינים להעמיק ולפתח את היכולת שלהם מעבר לפרשת בר המצווה. אנחנו לומדים את כל כללי הקריאה, מבינים את מערכת הטעמים בשלמותה, ומתרגלים קריאה של פרשיות שונות.</p>
+                    
+                    <ul class="features-list">
+                        <li>לימוד שיטתי של מערכת טעמי המקרא</li>
+                        <li>הבנת המבנה הפנימי והמוזיקלי של הטעמים</li>
+                        <li>תרגול מגוון פרשיות ודרגות קושי שונות</li>
+                        <li>לימוד כללי דיוק וחומרות בקריאת התורה</li>
+                        <li>פיתוח אוזן מוזיקלית וקול חזני</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>מה מייחד את שיטת הלימוד שלי?</h3>
+                    <p>אני מאמין שהסוד נמצא ביצירת חיבור רגשי ומשמעותי לתהליך הלמידה. אני לא רק מלמד את הטכניקה, אלא מעניק לילדים הבנה עמוקה של המסורת, בונה את הביטחון שלהם צעד אחר צעד, ומשתמש בכלים חווייתיים שהופכים את הלמידה לחוויה מעשירה ומהנה.</p>
+                </div>
+            </div>
+            
+            <div class="about-section">
+                <h2>התוצאות מדברות בעד עצמן</h2>
+                
+                <div class="stats-container">
+                    <div class="stat-box">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-text">חתני בר מצווה</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-text">הצלחה מלאה</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-text">קהילות</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">12</div>
+                        <div class="stat-text">שנות ניסיון</div>
+                    </div>
+                </div>
+                
+                <p>המסע שלי עם כל ילד מתחיל הרבה לפני הפרשה עצמה. אנחנו מתחילים מהיסודות - איך מחזיקים את הספר, איך עומדים מול קהל, איך נושמים נכון בזמן הקריאה. אני מקדיש זמן רב להסביר <strong>למה</strong> בכלל יש טעמי מקרא, מה המשמעות שלהם, ואיך הם תורמים להבנת התורה.</p>
+                
+                <div class="about-grid">
+                    <div>
+                        <p>הגישה החווייתית שלי כוללת משחקים, סיפורים, ולעתים אפילו אמצעים טכנולוגיים שעוזרים לילדים להתחבר לטקסט באופן משמעותי. אני מאמין שהמפתח להצלחה טמון בבניית ביטחון הדרגתי, דרך הצלחות קטנות לאורך הדרך.</p>
+                        
+                        <p>מעבר ללימוד הקריאה עצמה, אני מעניק לתלמידיי מעטפת רחבה של ידע יהודי - מנהגים, משמעויות, סיפורים מאחורי הפרשה, והקשר שלהם לחיים המודרניים. מי שמעוניין מקבל העשרה שהופכת את הטקסט מעתיק לרלוונטי ומשמעותי.</p>
+                        
+                        <p>הליווי שלי אינו מסתיים בשיעור האחרון. אני מלווה את חתני בר המצווה גם ביום המיוחד עצמו, עומד לצדם בעלייה לתורה, ומעניק להם את הביטחון שהם צריכים ברגע האמת. למשפחות שמעוניינות, אני מציע גם ליווי מוזיקלי לבוקר העלייה לתורה, או ליווי לטקס משמעותי בכותל המערבי.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="/api/placeholder/500/350" alt="תמונה שלי מלמד">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-section">
+                <h2>ומה הלאה?</h2>
+                
+                <p>כל ילד הוא עולם ומלואו, עם צרכים, חששות וחוזקות משלו. אני מזמין אתכם לקבוע פגישת היכרות בה נוכל לדבר על הילד שלכם, להבין את הצרכים המיוחדים שלו, ולבנות יחד תוכנית אישית שתלווה אותו במסע המרגש לקראת בר המצווה.</p>
+                
+                <p>בין אם אתם מחפשים לימוד בסיסי לקריאת הפרשה, או הכשרה מעמיקה לבעל קורא, בין אם אתם מעוניינים בליווי מינימלי או בחוויה מקיפה לכל השבת - אני כאן כדי להתאים לכם את המסלול המושלם עבורכם.</p>
+                
+                <div class="highlight-box">
+                    <h3>המחויבות שלי</h3>
+                    <p>אני מתחייב להעניק לכל תלמיד את מלוא תשומת הלב, הסבלנות והמקצועיות, ולעשות הכל כדי להפוך את תהליך הלמידה לחוויה משמעותית, מעצימה ומהנה שתישאר איתו לכל החיים.</p>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="contact.html" class="btn">צרו קשר עכשיו</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- פוטר -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>אבן דרך</h3>
+                <p>מלווים את חתן בר המצווה בדרך משמעותית ומעצימה אל עולם המצוות, בשילוב חוויה מוזיקלית ייחודית.</p>
+            </div>
+            <div class="footer-section">
+                <h3>קישורים מהירים</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">בית</a></li>
+                    <li><a href="index.html#services">שירותים</a></li>
+                    <li><a href="products.html">מוצרים</a></li>
+                    <li><a href="about.html">אודות</a></li>
+                    <li><a href="contact.html">צור קשר</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>צור קשר</h3>
+                <p>טלפון: 050-1234567</p>
+                <p>מייל: info@evenderechweb.co.il</p>
+                <div class="footer-social">
+                    <a href="#">פייסבוק</a>
+                    <a href="#">אינסטגרם</a>
+                    <a href="#">יוטיוב</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 אבן דרך. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+</body>
+</html>

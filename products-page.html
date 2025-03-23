@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אבן דרך - המוצרים שלנו</title>
+    <style>
+        /* גופנים */
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap');
+        
+        /* סגנון בסיסי */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Heebo', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            direction: rtl;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+        
+        /* תפריט ניווט */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-left: 10px;
+        }
+        
+        .logo h1 {
+            color: #1a237e;
+            font-size: 1.8rem;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+        }
+        
+        .nav-links a {
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #3f51b5;
+        }
+        
+        /* תוכן ראשי */
+        main {
+            padding-top: 80px;
+        }
+        
+        section {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            color: #1a237e;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background: #3f51b5;
+        }
+        
+        h3 {
+            color: #3f51b5;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        /* סגנון דף המוצרים */
+        .product-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/400') center/cover no-repeat;
+            height: 300px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .product-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: -50px;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .package-card {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .package-card h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .package-card .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #3f51b5;
+            margin-bottom: 1.5rem;
+        }
+        
+        .package-card ul {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: right;
+        }
+        
+        .package-card li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-right: 1.5rem;
+        }
+        
+        .package-card li::before {
+            content: "✓";
+            color: #3f51b5;
+            position: absolute;
+            right: 0;
+        }
+        
+        .package-card.featured {
+            background: #3f51b5;
+            color: #fff;
+            transform: scale(1.05);
+        }
+        
+        .package-card.featured h3,
+        .package-card.featured .price {
+            color: #fff;
+        }
+        
+        .package-card.featured li::before {
+            color: #fff;
+        }
+        
+        .package-card.featured .btn {
+            background: #fff;
+            color: #3f51b5;
+        }
+        
+        .package-card.featured .btn:hover {
+            background: #f0f0f0;
+        }
+        
+        .popular-tag {
+            position: absolute;
+            top: 1rem;
+            right: -3rem;
+            background: #ff9800;
+            color: #fff;
+            padding: 0.5rem 3rem;
+            transform: rotate(45deg);
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #3f51b5;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: #1a237e;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* סגנון תיאור מוצר */
+        .product-details {
+            padding: 4rem 0;
+            border-top: 1px solid #eee;
+        }
+        
+        .product-details:first-of-type {
+            border-top: none;
+        }
+        
+        .product-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .product-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-image img {
+            width: 100%;
+            display: block;
+        }
+        
+        .product-text h3 {
+            margin-top: 0;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+        
+        .features-list li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-right: 2rem;
+        }
+        
+        .features-list li::before {
+            content: "✓";
+            color: #3f51b5;
+            position: absolute;
+            right: 0;
+            font-weight: bold;
+        }
+        
+        /* פוטר */
+        footer {
+            background: #1a237e;
+            color: #fff;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: right;
+        }
+        
+        .footer-section h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: #fff;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        
+        .footer-social {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 1rem;
+        }
+        
+        .footer-social a {
+            color: #fff;
+            margin-left: 1rem;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-social a:hover {
+            opacity: 1;
+        }
+        
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* אפקטים של מוזיקה ותווים */
+        .music-notes {
+            position: absolute;
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* אנימציה לתווים */
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0);
+            }
+        }
+        
+        .floating-note {
+            position: absolute;
+            opacity: 0.6;
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        .floating-note:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-note:nth-child(2) {
+            top: 40%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+        
+        .floating-note:nth-child(3) {
+            top: 60%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+        
+        .floating-note:nth-child(4) {
+            top: 30%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+        
+        /* הגלילה חלקה */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* מדיה קוורי */
+        @media (max-width: 991px) {
+            .product-grid,
+            .product-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .package-card.featured {
+                transform: scale(1);
+                margin: 2rem 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .product-container {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- תפריט ניווט -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>אבן דרך</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">בית</a></li>
+                <li><a href="index.html#services">שירותים</a></li>
+                <li><a href="products.html">מוצרים</a></li>
+                <li><a href="about.html">אודות</a></li>
+                <li><a href="contact.html">צור קשר</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- תוכן ראשי - דף המוצרים -->
+    <main>
+        <!-- תווי מוזיקה מרחפים -->
+        <div class="floating-note">♪</div>
+        <div class="floating-note">♫</div>
+        <div class="floating-note">♩</div>
+        <div class="floating-note">♬</div>
+        
+        <!-- קטע גיבור -->
+        <section class="product-hero">
+            <h2>השירותים והמסלולים שלנו</h2>
+            <p>מסלולים מותאמים אישית שיעניקו לבר המצווה שלכם חוויה משמעותית ובלתי נשכחת</p>
+        </section>
+        
+        <!-- מסלולים -->
+        <div class="product-container">
+            <h2>בחרו את המסלול המתאים לכם</h2>
+            <p>בין אם אתם מחפשים ליווי בסיסי, חוויה משולבת או חבילה מלאה לשבת בר המצווה, יש לנו את המסלול המושלם עבורכם.</p>
+            
+            <div class="product-grid">
+                <div id="basic" class="package-card">
+                    <h3>בייסיק</h3>
+                    <div class="price">₪1,500</div>
+                    <ul>
+                        <li>קורס דיגיטלי מלא לקריאת הפרשה</li>
+                        <li>חומרי לימוד מותאמים אישית</li>
+                        <li>תמיכה יומית בווטסאפ</li>
+                        <li>שיחות טלפון שבועיות</li>
+                        <li>הקלטות ותרגולים מובנים</li>
+                    </ul>
+                    <a href="contact.html" class="btn">להרשמה</a>
+                </div>
+                <div id="premium" class="package-card featured">
+                    <div class="popular-tag">פופולרי</div>
+                    <h3>פרימיום</h3>
+                    <div class="price">₪3,000</div>
+                    <ul>
+                        <li>כל מה שכלול בחבילת הבייסיק</li>
+                        <li>5 מפגשים פרונטליים</li>
+                        <li>אימון קול וטכניקות נשימה</li>
+                        <li>הכנה לדרשה</li>
+                        <li>חזרה גנרלית בבית הכנסת</li>
+                        <li>ליווי צמוד ביום האירוע</li>
+                    </ul>
+                    <a href="contact.html" class="btn">להרשמה</a>
+                </div>
+                <div id="vip" class="package-card">
+                    <h3>VIP</h3>
+                    <div class="price">₪5,000</div>
+                    <ul>
+                        <li>כל מה שכלול בחבילת הפרימיום</li>
+                        <li>הגעה לשבת חתן</li>
+                        <li>חזנות מלאה בשבת</li>
+                        <li>קבלת שבת וערבית חגיגית</li>
+                        <li>תפילת שחרית ומוסף</li>
+                        <li>הדרכה למשפחה לאורך כל השבת</li>
+                    </ul>
+                    <a href="contact.html" class="btn">להרשמה</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- תיאור מוצרים מפורט -->
+        <section>
+            <div id="basic-details" class="product-details">
+                <div class="product-content">
+                    <div class="product-image">
+                        <img src="/api/placeholder/500/350" alt="קורס דיגיטלי">
+                    </div>
+                    <div class="product-text">
+                        <h3>מסלול בייסיק - קורס דיגיטלי</h3>
+                        <p>מסלול הבייסיק שלנו מציע את הבסיס המושלם ללימוד עצמאי של קריאת פרשת בר המצווה, עם תמיכה מקצועית וזמינה לאורך כל הדרך.</p>
+                        <ul class="features-list">
+                            <li><strong>קורס דיגיטלי מובנה</strong> - מערך שיעורים שלם שפותח במיוחד עבור חתני בר מצווה, עם הסברים פשוטים וברורים.</li>
+                            <li><strong>חומרי לימוד מותאמים אישית</strong> - הקלטות וחומרי עזר מותאמים לפרשה הספציפית של הבר מצווה.</li>
+                            <li><strong>תמיכה יומית בווטסאפ</strong> - מענה מהיר לכל שאלה או התלבטות במהלך תהליך הלמידה.</li>
+                            <li><strong>שיחות טלפון שבועיות</strong> - מעקב קבוע אחר ההתקדמות ומתן הכוונה אישית.</li>
+                            <li><strong>טכניקות למידה מתקדמות</strong> - שיטות ייחודיות שיסייעו בזכירת הטעמים והמנגינה.</li>
+                        </ul>
+                        <p>המסלול הבסיסי מתאים במיוחד למשפחות שמעוניינות בגמישות מקסימלית בזמני הלימוד, או למי שגר באזורים מרוחקים.</p>
+                        <a href="contact.html" class="btn">לפרטים נוספים</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="premium-details" class="product-details">
+                <div class="product-content">
+                    <div class="product-text">
+                        <h3>מסלול פרימיום - ליווי אישי</h3>
+                        <p>מסלול הפרימיום מציע חוויית למידה משולבת - דיגיטלית ופרונטלית, עם ליווי צמוד והכנה מקיפה לאירוע המיוחד.</p>
+                        <ul class="features-list">
+                            <li><strong>5 מפגשים פרונטליים</strong> - שיעורים אישיים פנים מול פנים לתרגול, דיוק והעמקה.</li>
+                            <li><strong>אימון קול וטכניקות נשימה</strong> - לימוד טכניקות מקצועיות שיסייעו בהעברת הקריאה בביטחון ובבהירות.</li>
+                            <li><strong>הכנה לדרשה</strong> - עזרה בכתיבת ובהכנת הדרשה, כולל טיפים להופעה בפני קהל.</li>
+                            <li><strong>חזרה גנרלית בבית הכנסת</strong> - תרגול באווירה אמיתית להפחתת לחץ והתרגשות ביום האירוע.</li>
+                            <li><strong>ליווי ביום האירוע</strong> - נוכחות ותמיכה לאורך האירוע המיוחד.</li>
+                        </ul>
+                        <p>מסלול הפרימיום הוא הבחירה המועדפת על רוב המשפחות, המשלב את הנוחות של למידה מרחוק עם היתרונות המשמעותיים של הדרכה אישית פנים מול פנים.</p>
+                        <a href="contact.html" class="btn">לפרטים נוספים</a>
+                    </div>
+                    <div class="product-image">
+                        <img src="/api/placeholder/500/350" alt="ליווי אישי">
+                    </div>
+                </div>
+            </div>
+            
+            <div id="vip-details" class="product-details">
+                <div class="product-content">
+                    <div class="product-image">
+                        <img src="/api/placeholder/500/350" alt="שבת חתן">
+                    </div>
+                    <div class="product-text">
+                        <h3>מסלול VIP - שבת חתן מלאה</h3>
+                        <p>מסלול ה-VIP מציע את החוויה המלאה והמושלמת ביותר לשבת בר המצווה, עם חזנות מקצועית וליווי אישי לאורך כל השבת.</p>
+                        <ul class="features-list">
+                            <li><strong>חזנות מלאה בשבת</strong> - חזנות מסורתית ברמה הגבוהה ביותר שתרומם את אווירת השבת.</li>
+                            <li><strong>קבלת שבת וערבית חגיגית</strong> - פתיחת השבת באווירה מרוממת ומיוחדת.</li>
+                            <li><strong>תפילת שחרית ומוסף</strong> - חזנות מרגשת שתעניק למעמד בר המצווה את הכבוד הראוי.</li>
+                            <li><strong>הדרכה למשפחה</strong> - הכוונה והדרכה לכל בני המשפחה לאורך השבת.</li>
+                            <li><strong>שיתוף קהילתי</strong> - יצירת אווירה קהילתית מרגשת ומאחדת דרך התפילה והשירה.</li>
+                        </ul>
+                        <p>מסלול ה-VIP מיועד למשפחות המעוניינות בחוויה מושלמת ומרגשת, שתהפוך את שבת בר המצווה לאירוע בלתי נשכח עבור כל המשתתפים.</p>
+                        <a href="contact.html" class="btn">לפרטים נוספים</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- פוטר -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>אבן דרך</h3>
+                <p>מלווים את חתן בר המצווה בדרך משמעותית ומעצימה אל עולם המצוות, בשילוב חוויה מוזיקלית ייחודית.</p>
+            </div>
+            <div class="footer-section">
+                <h3>קישורים מהירים</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">בית</a></li>
+                    <li><a href="index.html#services">שירותים</a></li>
+                    <li><a href="products.html">מוצרים</a></li>
+                    <li><a href="about.html">אודות</a></li>
+                    <li><a href="contact.html">צור קשר</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>צור קשר</h3>
+                <p>טלפון: 050-1234567</p>
+                <p>מייל: info@evenderechweb.co.il</p>
+                <div class="footer-social">
+                    <a href="#">פייסבוק</a>
+                    <a href="#">אינסטגרם</a>
+                    <a href="#">יוטיוב</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 אבן דרך. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+</body>
+</html>
