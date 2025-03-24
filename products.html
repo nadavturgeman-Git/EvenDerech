@@ -401,6 +401,9 @@
         .highlight-box h3 {
             margin-top: 0;
         }
+    </style>
+    <style>
+        /* המשך סגנונות */
         
         /* קטע קריאה לפעולה */
         .products-cta {
@@ -610,8 +613,162 @@
             <h2>החבילות והשירותים שלנו</h2>
             <p>מגוון פתרונות המותאמים אישית לכל אירוע משמעותי בחייכם</p>
         </section>
-        
+
         <!-- תוכן המוצרים -->
+        <div class="products-container">
+            <div class="products-intro">
+                <h2>בחרו את החבילה המתאימה לכם</h2>
+                <p>בין אם אתם מחפשים ליווי בסיסי, חוויה משולבת או חבילה מלאה, יש לנו את המסלול המושלם עבורכם. לכל אבן דרך בחיים התאמנו חבילות ייחודיות שיענו בדיוק על הצרכים שלכם.</p>
+            </div>
+            
+            <!-- לשוניות -->
+            <div class="tabs">
+                <button class="tablink active" onclick="openTab('brit')">ברית מילה/בת</button>
+                <button class="tablink" onclick="openTab('bar-mitzvah')">בר/בת מצווה</button>
+                <button class="tablink" onclick="openTab('wedding')">חתונה</button>
+                <button class="tablink" onclick="openTab('other')">אירועים נוספים</button>
+            </div>
+            
+            <!-- תוכן לשוניות -->
+            <div id="brit" class="tabcontent active">
+                <div class="packages-grid">
+                    <div class="package-card">
+                        <h3>בייסיק</h3>
+                        <div class="price">₪1,200</div>
+                        <ul>
+                            <li>פיוטים מסורתיים בטקס הברית</li>
+                            <li>מקטעי שירה בקבלת הפנים</li>
+                            <li>התאמה למנהגי המשפחה</li>
+                            <li>פגישת תיאום ציפיות מקדימה</li>
+                            <li>שירת "ברוך הבא" מסורתית</li>
+                        </ul>
+                        <a href="contact.html" class="btn">להזמנה</a>
+                    </div>
+                    <div class="package-card featured">
+                        <div class="popular-tag">פופולרי</div>
+                        <h3>פרימיום</h3>
+                        <div class="price">₪1,800</div>
+                        <ul>
+                            <li>כל מה שכלול בחבילת הבייסיק</li>
+                            <li>ליווי מוזיקלי בסעודת המצווה</li>
+                            <li>שירים מותאמים אישית למשפחה</li>
+                            <li>הכנת שיר מיוחד לכבוד הרך הנולד</li>
+                            <li>הדרכת הקהל בשירה משותפת</li>
+                        </ul>
+                        <a href="contact.html" class="btn">להזמנה</a>
+                    </div>
+                    <div class="package-card">
+                        <h3>VIP</h3>
+                        <div class="price">₪2,500</div>
+                        <ul>
+                            <li>כל מה שכלול בחבילת הפרימיום</li>
+                            <li>ליווי מוזיקלי לברית יצחק (וואכנאכט)</li>
+                            <li>הקלטת שיר מיוחד למזכרת</li>
+                            <li>תפילה חגיגית בבוקר הברית</li>
+                            <li>פיוטים בסגנונות מגוונים לבחירתכם</li>
+                        </ul>
+                        <a href="contact.html" class="btn">להזמנה</a>
+                    </div>
+                </div>
+                
+                <div class="product-details">
+                    <h3>למה דווקא ליווי מוזיקלי לברית?</h3>
+                    <p>הברית היא הרגע הראשון בו התינוק/ת שלכם נכנס/ת לברית עם המסורת היהודית העתיקה. ליווי מוזיקלי מקצועי ומרגש הופך את הרגע הזה למשמעותי עוד יותר, ומעניק לאירוע אווירה חגיגית ומיוחדת.</p>
+                    
+                    <div class="highlight-box">
+                        <h3>פיוטים מסורתיים לברית</h3>
+                        <p>הפיוטים והשירים המסורתיים משקפים את העושר התרבותי והרוחני של המסורת היהודית. אנו מביאים את המסורת הזו בגישה מודרנית ומרגשת, המתאימה לכל סוגי הקהלים והעדות.</p>
+                    </div>
+                    
+                    <ul class="features-list">
+                        <li>פיוטים מסורתיים מכל העדות - ספרדים, אשכנזים, ותימנים</li>
+                        <li>התאמה אישית לאופי המשפחה והאירוע</li>
+                        <li>שילוב בין מסורת לחדשנות</li>
+                        <li>יצירת אווירה מרוממת ומשפחתית</li>
+                        <li>חוויה מוזיקלית בלתי נשכחת לכל האורחים</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="bar-mitzvah" class="tabcontent">
+                <div class="packages-grid">
+                    <div class="package-card">
+                        <h3>בייסיק</h3>
+                        <div class="price">₪1,500</div>
+                        <ul>
+                            <li>קורס דיגיטלי מלא לקריאת הפרשה</li>
+                            <li>חומרי לימוד מותאמים אישית</li>
+                            <li>תמיכה יומית בווטסאפ</li>
+                            <li>שיחות טלפון שבועיות</li>
+                            <li>הקלטות ותרגולים מובנים</li>
+                        </ul>
+                        <a href="contact.html" class="btn">להרשמה</a>
+                    </div>
+                    <div class="package-card featured">
+                        <div class="popular-tag">פופולרי</div>
+                        <h3>פרימיום</h3>
+                        <div class="price">₪3,000</div>
+                        <ul>
+                            <li>כל מה שכלול בחבילת הבייסיק</li>
+                            <li>5 מפגשים פרונטליים</li>
+                            <li>אימון קול וטכניקות נשימה</li>
+                            <li>הכנה לדרשה</li>
+                            <li>חזרה גנרלית בבית הכנסת</li>
+                            <li>ליווי צמוד ביום האירוע</li>
+                        </ul>
+                        <a href="contact.html" class="btn">להרשמה</a>
+                    </div>
+                    <div class="package-card">
+                        <h3>VIP</h3>
+                        <div class="price">₪5,000</div>
+                        <ul>
+                            <li>כל מה שכלול בחבילת הפרימיום</li>
+                            <li>הגעה לשבת חתן</li>
+                            <li>חזנות מלאה בשבת</li>
+                            <li>קבלת שבת וערבית חגיגית</li>
+                            <li>תפילת שחרית ומוסף</li>
+                            <li>הדרכה למשפחה לאורך כל השבת</li>
+                        </ul>
+                        <a href="contact.html" class="btn">להרשמה</a>
+                    </div>
+                </div>
+                
+                <div class="product-details">
+                    <h3>מסע משמעותי אל בר/בת המצווה</h3>
+                    <p>בר/בת המצווה הם אבן דרך משמעותית בחיי כל נער/ה. זהו זמן של צמיחה, למידה וכניסה לעולם המצוות. אנו מלווים את התהליך הזה באופן מקיף ומשמעותי, מעבר ללימוד הטכני של קריאת התורה.</p>
+                    
+                    <div class="highlight-box">
+                        <h3>יותר מקריאה בתורה</h3>
+                        <p>התהליך שלנו מתמקד ביצירת חוויה חינוכית וערכית, המעניקה לחתן/כלת בר/בת המצווה הבנה עמוקה של המסורת והמשמעות של הטקסט, לצד מיומנויות קריאה מדויקות.</p>
+                    </div>
+                    
+                    <ul class="features-list">
+                        <li>התמקדות ביסודות ההגייה הנכונה</li>
+                        <li>בניית ביטחון הדרגתי דרך הצלחות קטנות</li>
+                        <li>הבנת המשמעות של המילים והפסוקים</li>
+                        <li>תרגול מדויק של הטעמים והמנגינה</li>
+                        <li>עבודה על ביטחון בעמידה מול קהל</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="wedding" class="tabcontent">
+                <div class="packages-grid">
+                    <div class="package-card">
+                        <h3>בייסיק</h3>
+                        <div class="price">₪1,800</div>
+                        <ul>
+                            <li>חזנות מסורתית לטקס החופה</li>
+                            <li>שירי כניסה לחופה</li>
+                            <li>ליווי מוזיקלי לשבע ברכות</li>
+                            <li>שירה בזמן החתימה על הכתובה</li>
+                            <li>פגישת תיאום ציפיות מקדימה</li>
+                        </ul>
+                        <a href="contact.html" class="btn">להזמנה</a>
+                    </div>
+                    <div class="package-card featured">
+
+                        <!-- תוכן המוצרים -->
         <div class="products-container">
             <div class="products-intro">
                 <h2>בחרו את החבילה המתאימה לכם</h2>
@@ -774,4 +931,178 @@
                             <li>הדרכת הקהל בשירה משותפת</li>
                             <li>ניגונים מיוחדים בשבע ברכות</li>
                         </ul>
-                        <a href="contact.html
+                        <a href="contact.html" class="btn">להזמנה</a>
+                    </div>
+                    <div class="package-card">
+                        <h3>VIP</h3>
+                        <div class="price">₪6,000</div>
+                        <ul>
+                            <li>כל מה שכלול בחבילת הפרימיום</li>
+                            <li>חזנות מלאה בשבת חתן</li>
+                            <li>קבלת שבת וערבית חגיגית</li>
+                            <li>ליווי מוזיקלי לשבעת ימי המשתה</li>
+                            <li>הקלטת שיר מיוחד כמזכרת</li>
+                            <li>תיאום עם גורמים נוספים באירוע</li>
+                        </ul>
+                        <a href="contact.html" class="btn">להזמנה</a>
+                    </div>
+                </div>
+                
+                <div class="product-details">
+                    <h3>ליווי מוזיקלי לרגע המכונן בחייכם</h3>
+                    <p>החתונה היא אחד הרגעים המרגשים ביותר בחיים, ולמוזיקה ולשירה יש תפקיד מרכזי ביצירת האווירה המיוחדת והרוחנית של האירוע. הליווי המוזיקלי שלנו מעניק לטקס החופה ולשבת חתן עומק רוחני ורגשי שיישאר איתכם לאורך שנים.</p>
+                    
+                    <div class="highlight-box">
+                        <h3>חזנות מסורתית עם נגיעה אישית</h3>
+                        <p>אנו משלבים בין הניגונים המסורתיים והפיוטים העתיקים לבין טעם אישי ומודרני, כדי ליצור חוויה מוזיקלית ייחודית המותאמת בדיוק לאופי שלכם ולאווירה שאתם רוצים ליצור.</p>
+                    </div>
+                    
+                    <ul class="features-list">
+                        <li>חזנות מסורתית עם אפשרות לשילוב סגנונות מוזיקליים מגוונים</li>
+                        <li>התאמה למנהגי העדות השונות</li>
+                        <li>שירים מותאמים אישית לזוג והסיפור שלהם</li>
+                        <li>יצירת אווירה רוחנית ומרגשת</li>
+                        <li>ליווי מקצועי ורגיש לכל שלבי האירוע</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="other" class="tabcontent">
+                <div class="packages-grid">
+                    <div class="package-card">
+                        <h3>בייסיק</h3>
+                        <div class="price">₪1,200</div>
+                        <ul>
+                            <li>ליווי מוזיקלי בסיסי לאירוע</li>
+                            <li>התאמה לאופי האירוע והמשפחה</li>
+                            <li>בחירת רפרטואר מתאים</li>
+                            <li>פגישת תיאום ציפיות מקדימה</li>
+                            <li>גמישות בזמנים ובמיקום</li>
+                        </ul>
+                        <a href="contact.html" class="btn">להזמנה</a>
+                    </div>
+                    <div class="package-card featured">
+                        <div class="popular-tag">פופולרי</div>
+                        <h3>פרימיום</h3>
+                        <div class="price">₪2,000</div>
+                        <ul>
+                            <li>כל מה שכלול בחבילת הבייסיק</li>
+                            <li>ליווי מוזיקלי מורחב</li>
+                            <li>שירים ופיוטים מותאמים אישית</li>
+                            <li>הדרכת הקהל בשירה משותפת</li>
+                            <li>שילוב תכנים ייחודיים לאירוע</li>
+                        </ul>
+                        <a href="contact.html" class="btn">להזמנה</a>
+                    </div>
+                    <div class="package-card">
+                        <h3>VIP</h3>
+                        <div class="price">₪3,500+</div>
+                        <ul>
+                            <li>כל מה שכלול בחבילת הפרימיום</li>
+                            <li>תכנון מוזיקלי מלא של האירוע</li>
+                            <li>חיבור/עיבוד שירים מיוחדים</li>
+                            <li>הקלטת שיר/ניגון כמזכרת</li>
+                            <li>תיאום עם גורמים נוספים באירוע</li>
+                            <li>ליווי ארוך טווח לפי הצורך</li>
+                        </ul>
+                        <a href="contact.html" class="btn">להזמנה</a>
+                    </div>
+                </div>
+                
+                <div class="product-details">
+                    <h3>ליווי מוזיקלי לכל אבן דרך משמעותית</h3>
+                    <p>החיים מלאים ברגעים מיוחדים הראויים לציון מוזיקלי איכותי. בין אם מדובר בחנוכת בית, אזכרה, סיום מסכת או כל אירוע משמעותי אחר - אנחנו כאן כדי להעניק ליווי מוזיקלי מותאם אישית שיהפוך את הרגע לבלתי נשכח.</p>
+                    
+                    <div class="highlight-box">
+                        <h3>התאמה מדויקת לכל סוג אירוע</h3>
+                        <p>כל אירוע הוא ייחודי ובעל אופי משלו. אנו מתאימים את הליווי המוזיקלי, הרפרטואר והסגנון בדיוק לאופי האירוע ולמטרתו, כדי לשרת בצורה הטובה ביותר את המשמעות והחוויה שאתם מבקשים ליצור.</p>
+                    </div>
+                    
+                    <ul class="features-list">
+                        <li>חנוכת בית - שירים וניגונים מסורתיים לחנוכת הבית החדש</li>
+                        <li>אזכרות - ניגונים מתאימים ומכבדים לאזכרות ולטקסי זיכרון</li>
+                        <li>סיום מסכת - ליווי מוזיקלי לאירועי סיום מסכת ולימוד תורה</li>
+                        <li>ברית יצחק (וואכנאכט) - פיוטים מסורתיים לערב שלפני הברית</li>
+                        <li>אירועי זקן/ה - ליווי מוזיקלי לחגיגות יום הולדת מיוחדות לקשישים</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+                        <!-- קטע קריאה לפעולה -->
+        <section class="products-cta">
+            <h2>בואו ונתאים יחד את החבילה המושלמת עבורכם</h2>
+            <p>כל אירוע הוא ייחודי, וכל משפחה היא מיוחדת. אנחנו כאן כדי להתאים את השירותים שלנו בדיוק לצרכים ולחלומות שלכם. צרו איתנו קשר וביחד נהפוך את הרגע המיוחד שלכם לחוויה בלתי נשכחת.</p>
+            <a href="contact.html" class="btn">צרו קשר עכשיו</a>
+        </section>
+    </main>
+    
+    <!-- פוטר -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>אבן דרך</h3>
+                <p>ליווי מוזיקלי לרגעים המשמעותיים בחייכם - ברית, בר מצווה, חתונה ועוד אבני דרך חשובות בחיים היהודיים.</p>
+            </div>
+            <div class="footer-section">
+                <h3>קישורים מהירים</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">בית</a></li>
+                    <li><a href="milestones.html">אבני הדרך שלנו</a></li>
+                    <li><a href="products.html">מוצרים</a></li>
+                    <li><a href="about.html">אודות</a></li>
+                    <li><a href="contact.html">צור קשר</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>צור קשר</h3>
+                <p>טלפון: 050-1234567</p>
+                <p>מייל: info@evenderechweb.co.il</p>
+                <div class="footer-social">
+                    <a href="#">פייסבוק</a>
+                    <a href="#">אינסטגרם</a>
+                    <a href="#">יוטיוב</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 אבן דרך. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+
+    <!-- סקריפט להחלפת טאבים -->
+    <script>
+        function openTab(tabName) {
+            // הסתר את כל התוכן של הטאבים
+            var tabcontents = document.getElementsByClassName("tabcontent");
+            for (var i = 0; i < tabcontents.length; i++) {
+                tabcontents[i].style.display = "none";
+            }
+            
+            // הסר את הקלאס "אקטיבי" מכל הכפתורים
+            var tablinks = document.getElementsByClassName("tablink");
+            for (var i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            
+            // הצג את התוכן של הטאב הנבחר
+            document.getElementById(tabName).style.display = "block";
+            
+            // הוסף קלאס "אקטיבי" לכפתור שנלחץ
+            event.currentTarget.classList.add("active");
+        }
+
+        // בדיקה אם התוכן טעון באמצעות האש
+        document.addEventListener("DOMContentLoaded", function() {
+            // בדוק אם יש האש בכתובת
+            var hash = window.location.hash.substr(1);
+            if (hash && ['brit', 'bar-mitzvah', 'wedding', 'other'].includes(hash)) {
+                openTab(hash);
+            } else {
+                // ברירת מחדל - פתח את הטאב הראשון
+                document.querySelector('.tablink').click();
+            }
+        });
+    </script>
+</body>
+</html>
