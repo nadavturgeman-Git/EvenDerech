@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אבן דרך - אבני הדרך שלנו</title>
+    <style>
+        /* גופנים */
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap');
+        
+        /* סגנון בסיסי */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Heebo', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            direction: rtl;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+        
+        /* תפריט ניווט */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-left: 10px;
+        }
+        
+        .logo h1 {
+            color: #1a237e;
+            font-size: 1.8rem;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+            position: relative;
+        }
+        
+        .nav-links a {
+            font-weight: bold;
+            transition: color 0.3s;
+            display: block;
+            padding: 5px 0;
+        }
+        
+        .nav-links a:hover {
+            color: #3f51b5;
+        }
+        
+        /* תפריט נפתח */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 180px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1;
+            top: 100%;
+            right: 0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .dropdown-content a {
+            padding: 12px 16px;
+            display: block;
+            font-weight: normal;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown > a::after {
+            content: "▼";
+            font-size: 0.7em;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        
+        /* תוכן ראשי */
+        main {
+            padding-top: 80px;
+        }
+        
+        section {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            color: #1a237e;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background: #3f51b5;
+        }
+        
+        h3 {
+            color: #3f51b5;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        /* סגנון דף אבני הדרך */
+        .milestones-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/milestones-banner.jpg') center/cover no-repeat;
+            height: 300px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .milestones-hero h2 {
+            color: #fff;
+        }
+        
+        .milestones-hero h2::after {
+            background: #fff;
+            margin: 0 auto;
+            right: 0;
+            left: 0;
+        }
+        
+        .milestone-section {
+            padding: 5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .milestone-section:last-child {
+            border-bottom: none;
+        }
+        
+        .milestone-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .milestone-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 100%;
+        }
+        
+        .milestone-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .milestone-text h3 {
+            margin-top: 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #3f51b5;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .btn:hover {
+            background: #1a237e;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .features-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .features-list li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-right: 2rem;
+        }
+        
+        .features-list li::before {
+            content: "✓";
+            color: #3f51b5;
+            position: absolute;
+            right: 0;
+            font-weight: bold;
+        }
+        
+        .highlight-box {
+            background: #f5f5f5;
+            border-right: 3px solid #3f51b5;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .highlight-box h3 {
+            margin-top: 0;
+        }
+        
+        .milestones-cta {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('images/cta-bg.jpg') center/cover no-repeat;
+            color: #fff;
+            text-align: center;
+            padding: 5rem 5%;
+            margin-top: 3rem;
+        }
+        
+        .milestones-cta h2 {
+            color: #fff;
+        }
+        
+        .milestones-cta h2::after {
+            background: #fff;
+            margin: 0 auto;
+            right: 0;
+            left: 0;
+        }
+        
+        .milestones-cta p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        
+        /* פוטר */
+        footer {
+            background: #1a237e;
+            color: #fff;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: right;
+        }
+        
+        .footer-section h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: #fff;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        
+        .footer-social {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 1rem;
+        }
+        
+        .footer-social a {
+            color: #fff;
+            margin-left: 1rem;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-social a:hover {
+            opacity: 1;
+        }
+        
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* אפקטים של מוזיקה ותווים */
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0);
+            }
+        }
+        
+        .floating-note {
+            position: absolute;
+            opacity: 0.6;
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        .floating-note:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-note:nth-child(2) {
+            top: 40%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+        
+        .floating-note:nth-child(3) {
+            top: 60%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+        
+        .floating-note:nth-child(4) {
+            top: 30%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+        
+        /* הגלילה חלקה */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* מדיה קוורי */
+        @media (max-width: 991px) {
+            .milestone-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .milestone-image {
+                margin-bottom: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- תפריט ניווט -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>אבן דרך</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">בית</a></li>
+                <li class="dropdown">
+                    <a href="milestones.html">אבני הדרך שלנו</a>
+                    <div class="dropdown-content">
+                        <a href="#brit">ברית מילה/בת</a>
+                        <a href="#bar-mitzvah">בר/בת מצווה</a>
+                        <a href="#wedding">חתונה</a>
+                        <a href="#other">אירועים נוספים</a>
+                    </div>
+                </li>
+                <li><a href="products.html">מוצרים</a></li>
+                <li><a href="about.html">אודות</a></li>
+                <li><a href="contact.html">צור קשר</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- תוכן ראשי - דף אבני הדרך -->
+    <main>
+        <!-- תווי מוזיקה מרחפים -->
+        <div class="floating-note">♪</div>
+        <div class="floating-note">♫</div>
+        <div class="floating-note">♩</div>
+        <div class="floating-note">♬</div>
+        
+        <!-- קטע גיבור -->
+        <section class="milestones-hero">
+            <h2>אבני הדרך שלנו</h2>
+            <p>ליווי מוזיקלי מקצועי לכל הרגעים המשמעותיים בחייכם</p>
+        </section>
+        
+        <!-- תוכן אבני הדרך -->
+        <section>
+            <div id="brit" class="milestone-section">
+                <h2>ברית מילה/בת</h2>
+                <div class="milestone-content">
+                    <div class="milestone-image">
+                        <img src="images/brit-detailed.jpg" alt="ברית מילה">
+                    </div>
+                    <div class="milestone-text">
+                        <h3>הרגע הראשון במסע היהודי</h3>
+                        <p>ברית המילה היא האבן הראשונה בדרך המשמעותית של כל יהודי. זהו אירוע משפחתי מרגש שמסמל את התחלת הקשר המיוחד בין הרך הנולד למסורת ולמורשת היהודית.</p>
+                        
+                        <p>השירה והפיוטים המסורתיים מוסיפים לחגיגה הזו ממד רוחני ותרבותי עשיר, והופכים את הרגע הזה לעוד יותר מיוחד ובלתי נשכח.</p>
+                        
+                        <div class="highlight-box">
+                            <h3>פיוטים וניגונים מסורתיים</h3>
+                            <p>אנו מציעים ליווי מוזיקלי עשיר לטקס הברית, המשלב פיוטים עתיקים בביצוע מודרני ומרגש, המותאם במיוחד לאופי המשפחה והאירוע.</p>
+                        </div>
+                        
+                        <ul class="features-list">
+                            <li>פיוטים מסורתיים לטקס הברית בסגנון ספרדי, אשכנזי או מזרחי</li>
+                            <li>שירים מיוחדים לקבלת פנים ולסעודת המצווה</li>
+                            <li>ליווי והנחיית הקהל בשירה משותפת</li>
+                            <li>התאמה אישית של הרפרטואר לפי מנהגי המשפחה</li>
+                            <li>אפשרות לשילוב שירים מודרניים ומקוריים</li>
+                        </ul>
+                        
+                        <a href="products.html#brit" class="btn">לפרטים על החבילות שלנו</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="bar-mitzvah" class="milestone-section">
+                <h2>בר/בת מצווה</h2>
+                <div class="milestone-content">
+                    <div class="milestone-text">
+                        <h3>הצעד המשמעותי אל עולם המצוות</h3>
+                        <p>בר/בת המצווה מסמלים את המעבר מילדות לבגרות יהודית, וכניסה לעולם המצוות והאחריות. זהו רגע מכונן בחייו של כל נער ונערה, שמלווה בתחושת גאווה, התרגשות וגם אחריות.</p>
+                        
+                        <p>אנו מציעים ליווי מקיף שהופך את התהליך כולו - מהלימוד והתרגול ועד לאירוע עצמו - לחוויה חינוכית, ערכית ומעצימה שתלווה את הנער/ה לאורך כל חייהם.</p>
+                        
+                        <div class="highlight-box">
+                            <h3>יותר מקריאה בתורה</h3>
+                            <p>אנחנו מאמינים שבר/בת מצווה הם הזדמנות לצמיחה אישית ולחיבור משמעותי למסורת. לכן, אנו מציעים תהליך מקיף שכולל לא רק לימוד הקריאה בתורה, אלא גם העשרה תרבותית ורוחנית.</p>
+                        </div>
+                        
+                        <ul class="features-list">
+                            <li>לימוד מקיף של קריאה בתורה והפטרה</li>
+                            <li>הכנה לכתיבת דרשה משמעותית ומעוררת השראה</li>
+                            <li>חזנות מקצועית לאורך שבת בר/בת המצווה</li>
+                            <li>ליווי מוזיקלי לאירוע בכותל המערבי</li>
+                            <li>העשרה בנושאי יהדות, מסורת וערכים</li>
+                        </ul>
+                        
+                        <a href="products.html#bar-mitzvah" class="btn">לפרטים על החבילות שלנו</a>
+                    </div>
+                    <div class="milestone-image">
+                        <img src="images/bar-mitzvah-detailed.jpg" alt="בר מצווה">
+                    </div>
+                </div>
+            </div>
+            
+            <div id="wedding" class="milestone-section">
+                <h2>חתונה</h2>
+                <div class="milestone-content">
+                    <div class="milestone-image">
+                        <img src="images/wedding-detailed.jpg" alt="חתונה">
+                    </div>
+                    <div class="milestone-text">
+                        <h3>יום בניית הבית היהודי</h3>
+                        <p>החתונה היא אחד הרגעים המרגשים והמשמעותיים בחייו של כל זוג. הרגע שבו שני אנשים מתחייבים זה לזו ומתחילים יחד את המסע של בניית בית יהודי חדש.</p>
+                        
+                        <p>המוזיקה והשירה הן חלק בלתי נפרד מטקס החופה ומהשבת שקודמת לו, והן תורמות ליצירת אווירה מרוממת ומרגשת שנחרטת בזכרון של כל הנוכחים.</p>
+                        
+                        <div class="highlight-box">
+                            <h3>חזנות מרגשת לטקס החופה</h3>
+                            <p>אנו מציעים חזנות מסורתית ומרגשת שתהפוך את טקס החופה לחוויה רוחנית ובלתי נשכחת, לצד ליווי מוזיקלי לשבת חתן שתיצור אווירה מיוחדת ומלאת שמחה.</p>
+                        </div>
+                        
+                        <ul class="features-list">
+                            <li>חזנות מסורתית לטקס החופה</li>
+                            <li>שירי חתן וכלה מותאמים אישית</li>
+                            <li>ליווי מוזיקלי לשבת חתן</li>
+                            <li>קבלת שבת מוזיקלית וחגיגית</li>
+                            <li>הכנת שיר מיוחד לחתן ולכלה</li>
+                        </ul>
+                        
+                        <a href="products.html#wedding" class="btn">לפרטים על החבילות שלנו</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="other" class="milestone-section">
+                <h2>אירועים נוספים</h2>
+                <div class="milestone-content">
+                    <div class="milestone-text">
+                        <h3>לכל רגע משמעותי בחייכם</h3>
+                        <p>החיים היהודיים מלאים ברגעים ייחודיים ומשמעותיים שראויים לציון מיוחד. אנו מציעים ליווי מוזיקלי מותאם אישית לכל אבן דרך משמעותית בחייכם.</p>
+                        
+                        <p>בין אם מדובר בחנוכת בית, אזכרה, סיום מסכת או כל אירוע משפחתי אחר - אנו מתאימים את הליווי המוזיקלי לאופי האירוע וליוצרים חוויה מוזיקלית ייחודית ומרגשת.</p>
+                        
+                        <div class="highlight-box">
+                            <h3>אירועים נוספים שאנו מלווים</h3>
+                            <p>החיים מלאים ברגעים מיוחדים הראויים לליווי מוזיקלי איכותי. אנו כאן עבורכם בכל צומת חיים משמעותי.</p>
+                        </div>
+                        
+                        <ul class="features-list">
+                            <li>חנוכת בית - שירים וניגונים מסורתיים לחנוכת הבית החדש</li>
+                            <li>אזכרות - ניגונים מתאימים ומכבדים לאזכרות ולטקסי זיכרון</li>
+                            <li>סיום מסכת - ליווי מוזיקלי לאירועי סיום מסכת ולימוד תורה</li>
+                            <li>ברית יצחק (וואכנאכט) - פיוטים מסורתיים לערב שלפני הברית</li>
+                            <li>אירועי זקן/ה - ליווי מוזיקלי לחגיגות יום הולדת מיוחדות לקשישים</li>
+                        </ul>
+                        
+                        <a href="products.html#other" class="btn">לפרטים על החבילות שלנו</a>
+                    </div>
+                    <div class="milestone-image">
+                        <img src="images/other-events-detailed.jpg" alt="אירועים נוספים">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- קריאה לפעולה -->
+        <section class="milestones-cta">
+            <h2>בואו נתאים יחד את הליווי המושלם לאירוע שלכם</h2>
+            <p>כל אבן דרך בחיים ראויה לציון מיוחד וייחודי. צרו איתנו קשר כדי להתאים את הליווי המוזיקלי המושלם לאירוע המיוחד שלכם.</p>
+            <a href="contact.html" class="btn">צרו קשר עכשיו</a>
+        </section>
+    </main>
+    
+    <!-- פוטר -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>אבן דרך</h3>
+                <p>ליווי מוזיקלי לרגעים המשמעותיים בחייכם - ברית, בר מצווה, חתונה ועוד אבני דרך חשובות בחיים היהודיים.</p>
+            </div>
+            <div class="footer-section">
+                <h3>קישורים מהירים</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">בית</a></li>
+                    <li><a href="milestones.html">אבני הדרך שלנו</a></li>
+                    <li><a href="products.html">מוצרים</a></li>
+                    <li><a href="about.html">אודות</a></li>
+                    <li><a href="contact.html">צור קשר</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>צור קשר</h3>
+                <p>טלפון: 050-1234567</p>
+                <p>מייל: info@evenderechweb.co.il</p>
+                <div class="footer-social">
+                    <a href="#">פייסבוק</a>
+                    <a href="#">אינסטגרם</a>
+                    <a href="#">יוטיוב</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 אבן דרך. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+</body>
+</html>
