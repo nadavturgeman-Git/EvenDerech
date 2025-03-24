@@ -621,12 +621,12 @@
                 <p>בין אם אתם מחפשים ליווי בסיסי, חוויה משולבת או חבילה מלאה, יש לנו את המסלול המושלם עבורכם. לכל אבן דרך בחיים התאמנו חבילות ייחודיות שיענו בדיוק על הצרכים שלכם.</p>
             </div>
             
-            <!-- לשוניות -->
+<!-- לשוניות מתוקנות -->
             <div class="tabs">
-                <button class="tablink active" onclick="openTab('brit')">ברית מילה/בת</button>
-                <button class="tablink" onclick="openTab('bar-mitzvah')">בר/בת מצווה</button>
-                <button class="tablink" onclick="openTab('wedding')">חתונה</button>
-                <button class="tablink" onclick="openTab('other')">אירועים נוספים</button>
+                <button class="tablink active" onclick="window.openTab('brit', this)">ברית מילה/בת</button>
+                <button class="tablink" onclick="window.openTab('bar-mitzvah', this)">בר/בת מצווה</button>
+                <button class="tablink" onclick="window.openTab('wedding', this)">חתונה</button>
+                <button class="tablink" onclick="window.openTab('other', this)">אירועים נוספים</button>
             </div>
             
             <!-- תוכן לשוניות -->
@@ -1070,39 +1070,45 @@
         </div>
     </footer>
 
-    <!-- סקריפט להחלפת טאבים -->
-    <script>
-        function openTab(tabName) {
-            // הסתר את כל התוכן של הטאבים
-            var tabcontents = document.getElementsByClassName("tabcontent");
-            for (var i = 0; i < tabcontents.length; i++) {
-                tabcontents[i].style.display = "none";
-            }
-            
-            // הסר את הקלאס "אקטיבי" מכל הכפתורים
-            var tablinks = document.getElementsByClassName("tablink");
-            for (var i = 0; i < tablinks.length; i++) {
-                tablinks[i].classList.remove("active");
-            }
-            
-            // הצג את התוכן של הטאב הנבחר
-            document.getElementById(tabName).style.display = "block";
-            
-            // הוסף קלאס "אקטיבי" לכפתור שנלחץ
-            event.currentTarget.classList.add("active");
-        }
+<!-- סקריפט להחלפת טאבים (מתוקן) -->
+            <script>
+                // הגדרת פונקציית openTab בחלון הגלובלי
+                window.openTab = function(tabName, clickedButton) {
+                    // הסתר את כל התוכן של הטאבים
+                    var tabcontents = document.getElementsByClassName("tabcontent");
+                    for (var i = 0; i < tabcontents.length; i++) {
+                        tabcontents[i].style.display = "none";
+                    }
+                    
+                    // הסר את הקלאס "אקטיבי" מכל הכפתורים
+                    var tablinks = document.getElementsByClassName("tablink");
+                    for (var i = 0; i < tablinks.length; i++) {
+                        tablinks[i].classList.remove("active");
+                    }
+                    
+                    // הצג את התוכן של הטאב הנבחר
+                    document.getElementById(tabName).style.display = "block";
+                    
+                    // הוסף קלאס "אקטיבי" לכפתור שנלחץ
+                    if (clickedButton) {
+                        clickedButton.classList.add("active");
+                    }
+                };
 
-        // בדיקה אם התוכן טעון באמצעות האש
-        document.addEventListener("DOMContentLoaded", function() {
-            // בדוק אם יש האש בכתובת
-            var hash = window.location.hash.substr(1);
-            if (hash && ['brit', 'bar-mitzvah', 'wedding', 'other'].includes(hash)) {
-                openTab(hash);
-            } else {
-                // ברירת מחדל - פתח את הטאב הראשון
-                document.querySelector('.tablink').click();
-            }
-        });
-    </script>
+                // בדיקה אם התוכן טעון 
+                document.addEventListener("DOMContentLoaded", function() {
+                    // בדוק אם יש האש בכתובת
+                    var hash = window.location.hash.substr(1);
+                    if (hash && ['brit', 'bar-mitzvah', 'wedding', 'other'].includes(hash)) {
+                        // מצא את הכפתור המתאים
+                        const matchingButton = document.querySelector(`.tablink[onclick*="${hash}"]`);
+                        window.openTab(hash, matchingButton);
+                    } else {
+                        // ברירת מחדל - פתח את הטאב הראשון
+                        const firstTab = document.querySelector('.tablink');
+                        window.openTab('brit', firstTab);
+                    }
+                });
+            </script>
 </body>
 </html>
