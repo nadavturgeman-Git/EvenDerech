@@ -69,15 +69,62 @@
         
         .nav-links li {
             margin: 0 15px;
+            position: relative;
         }
         
         .nav-links a {
             font-weight: bold;
             transition: color 0.3s;
+            display: block;
+            padding: 5px 0;
         }
         
         .nav-links a:hover {
             color: #3f51b5;
+        }
+        
+        /* תפריט נפתח */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 180px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1;
+            top: 100%;
+            right: 0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .dropdown-content a {
+            padding: 12px 16px;
+            display: block;
+            font-weight: normal;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown > a::after {
+            content: "▼";
+            font-size: 0.7em;
+            margin-right: 5px;
+            vertical-align: middle;
         }
         
         /* תוכן ראשי */
@@ -120,8 +167,8 @@
         }
         
         /* סגנון דף המוצרים */
-        .product-hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/400') center/cover no-repeat;
+        .products-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/products-banner.jpg') center/cover no-repeat;
             height: 300px;
             color: #fff;
             display: flex;
@@ -131,7 +178,18 @@
             text-align: center;
         }
         
-        .product-container {
+        .products-hero h2 {
+            color: #fff;
+        }
+        
+        .products-hero h2::after {
+            background: #fff;
+            margin: 0 auto;
+            right: 0;
+            left: 0;
+        }
+        
+        .products-container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 3rem 2rem;
@@ -143,7 +201,64 @@
             margin-bottom: 3rem;
         }
         
-        .product-grid {
+        /* לשוניות */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 3rem;
+        }
+        
+        .tablink {
+            background: none;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #777;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            font-family: 'Heebo', sans-serif;
+        }
+        
+        .tablink:hover {
+            color: #3f51b5;
+        }
+        
+        .tablink.active {
+            color: #3f51b5;
+        }
+        
+        .tablink.active::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #3f51b5;
+        }
+        
+        /* תוכן לשוניות */
+        .tabcontent {
+            display: none;
+        }
+        
+        .tabcontent.active {
+            display: block;
+        }
+        
+        .products-intro {
+            text-align: center;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* חבילות */
+        .packages-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
@@ -240,6 +355,7 @@
             border-radius: 50px;
             font-weight: bold;
             transition: all 0.3s;
+            margin-top: 1rem;
         }
         
         .btn:hover {
@@ -248,41 +364,16 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
-        /* סגנון תיאור מוצר */
+        /* תיאור מוצר */
         .product-details {
-            padding: 4rem 0;
+            margin-top: 4rem;
+            padding-top: 3rem;
             border-top: 1px solid #eee;
-        }
-        
-        .product-details:first-of-type {
-            border-top: none;
-        }
-        
-        .product-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-        
-        .product-image {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .product-image img {
-            width: 100%;
-            display: block;
-        }
-        
-        .product-text h3 {
-            margin-top: 0;
         }
         
         .features-list {
             list-style: none;
-            margin: 2rem 0;
+            margin: 1.5rem 0;
         }
         
         .features-list li {
@@ -297,6 +388,44 @@
             position: absolute;
             right: 0;
             font-weight: bold;
+        }
+        
+        .highlight-box {
+            background: #f5f5f5;
+            border-right: 3px solid #3f51b5;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .highlight-box h3 {
+            margin-top: 0;
+        }
+        
+        /* קטע קריאה לפעולה */
+        .products-cta {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('images/cta-bg.jpg') center/cover no-repeat;
+            color: #fff;
+            text-align: center;
+            padding: 5rem 5%;
+            margin-top: 3rem;
+        }
+        
+        .products-cta h2 {
+            color: #fff;
+        }
+        
+        .products-cta h2::after {
+            background: #fff;
+            margin: 0 auto;
+            right: 0;
+            left: 0;
+        }
+        
+        .products-cta p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
         }
         
         /* פוטר */
@@ -364,14 +493,6 @@
         }
         
         /* אפקטים של מוזיקה ותווים */
-        .music-notes {
-            position: absolute;
-            opacity: 0.1;
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        /* אנימציה לתווים */
         @keyframes float {
             0% {
                 transform: translateY(0) rotate(0);
@@ -421,14 +542,22 @@
         
         /* מדיה קוורי */
         @media (max-width: 991px) {
-            .product-grid,
-            .product-content {
+            .packages-grid {
                 grid-template-columns: 1fr;
             }
             
             .package-card.featured {
                 transform: scale(1);
                 margin: 2rem 0;
+            }
+            
+            .tabs {
+                flex-wrap: wrap;
+            }
+            
+            .tablink {
+                padding: 0.8rem 1.2rem;
+                font-size: 1rem;
             }
         }
         
@@ -437,7 +566,7 @@
                 display: none;
             }
             
-            .product-container {
+            .products-container {
                 padding: 2rem 1rem;
             }
         }
@@ -452,7 +581,15 @@
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">בית</a></li>
-                <li><a href="index.html#services">שירותים</a></li>
+                <li class="dropdown">
+                    <a href="milestones.html">אבני הדרך שלנו</a>
+                    <div class="dropdown-content">
+                        <a href="milestones.html#brit">ברית מילה/בת</a>
+                        <a href="milestones.html#bar-mitzvah">בר/בת מצווה</a>
+                        <a href="milestones.html#wedding">חתונה</a>
+                        <a href="milestones.html#other">אירועים נוספים</a>
+                    </div>
+                </li>
                 <li><a href="products.html">מוצרים</a></li>
                 <li><a href="about.html">אודות</a></li>
                 <li><a href="contact.html">צור קשר</a></li>
@@ -469,157 +606,172 @@
         <div class="floating-note">♬</div>
         
         <!-- קטע גיבור -->
-        <section class="product-hero">
-            <h2>השירותים והמסלולים שלנו</h2>
-            <p>מסלולים מותאמים אישית שיעניקו לבר המצווה שלכם חוויה משמעותית ובלתי נשכחת</p>
+        <section class="products-hero">
+            <h2>החבילות והשירותים שלנו</h2>
+            <p>מגוון פתרונות המותאמים אישית לכל אירוע משמעותי בחייכם</p>
         </section>
         
-        <!-- מסלולים -->
-        <div class="product-container">
-            <h2>בחרו את המסלול המתאים לכם</h2>
-            <p>בין אם אתם מחפשים ליווי בסיסי, חוויה משולבת או חבילה מלאה לשבת בר המצווה, יש לנו את המסלול המושלם עבורכם.</p>
-            
-            <div class="product-grid">
-                <div id="basic" class="package-card">
-                    <h3>בייסיק</h3>
-                    <div class="price">₪1,500</div>
-                    <ul>
-                        <li>קורס דיגיטלי מלא לקריאת הפרשה</li>
-                        <li>חומרי לימוד מותאמים אישית</li>
-                        <li>תמיכה יומית בווטסאפ</li>
-                        <li>שיחות טלפון שבועיות</li>
-                        <li>הקלטות ותרגולים מובנים</li>
-                    </ul>
-                    <a href="contact.html" class="btn">להרשמה</a>
-                </div>
-                <div id="premium" class="package-card featured">
-                    <div class="popular-tag">פופולרי</div>
-                    <h3>פרימיום</h3>
-                    <div class="price">₪3,000</div>
-                    <ul>
-                        <li>כל מה שכלול בחבילת הבייסיק</li>
-                        <li>5 מפגשים פרונטליים</li>
-                        <li>אימון קול וטכניקות נשימה</li>
-                        <li>הכנה לדרשה</li>
-                        <li>חזרה גנרלית בבית הכנסת</li>
-                        <li>ליווי צמוד ביום האירוע</li>
-                    </ul>
-                    <a href="contact.html" class="btn">להרשמה</a>
-                </div>
-                <div id="vip" class="package-card">
-                    <h3>VIP</h3>
-                    <div class="price">₪5,000</div>
-                    <ul>
-                        <li>כל מה שכלול בחבילת הפרימיום</li>
-                        <li>הגעה לשבת חתן</li>
-                        <li>חזנות מלאה בשבת</li>
-                        <li>קבלת שבת וערבית חגיגית</li>
-                        <li>תפילת שחרית ומוסף</li>
-                        <li>הדרכה למשפחה לאורך כל השבת</li>
-                    </ul>
-                    <a href="contact.html" class="btn">להרשמה</a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- תיאור מוצרים מפורט -->
-        <section>
-            <div id="basic-details" class="product-details">
-                <div class="product-content">
-                    <div class="product-image">
-                        <img src="/api/placeholder/500/350" alt="קורס דיגיטלי">
-                    </div>
-                    <div class="product-text">
-                        <h3>מסלול בייסיק - קורס דיגיטלי</h3>
-                        <p>מסלול הבייסיק שלנו מציע את הבסיס המושלם ללימוד עצמאי של קריאת פרשת בר המצווה, עם תמיכה מקצועית וזמינה לאורך כל הדרך.</p>
-                        <ul class="features-list">
-                            <li><strong>קורס דיגיטלי מובנה</strong> - מערך שיעורים שלם שפותח במיוחד עבור חתני בר מצווה, עם הסברים פשוטים וברורים.</li>
-                            <li><strong>חומרי לימוד מותאמים אישית</strong> - הקלטות וחומרי עזר מותאמים לפרשה הספציפית של הבר מצווה.</li>
-                            <li><strong>תמיכה יומית בווטסאפ</strong> - מענה מהיר לכל שאלה או התלבטות במהלך תהליך הלמידה.</li>
-                            <li><strong>שיחות טלפון שבועיות</strong> - מעקב קבוע אחר ההתקדמות ומתן הכוונה אישית.</li>
-                            <li><strong>טכניקות למידה מתקדמות</strong> - שיטות ייחודיות שיסייעו בזכירת הטעמים והמנגינה.</li>
-                        </ul>
-                        <p>המסלול הבסיסי מתאים במיוחד למשפחות שמעוניינות בגמישות מקסימלית בזמני הלימוד, או למי שגר באזורים מרוחקים.</p>
-                        <a href="contact.html" class="btn">לפרטים נוספים</a>
-                    </div>
-                </div>
+        <!-- תוכן המוצרים -->
+        <div class="products-container">
+            <div class="products-intro">
+                <h2>בחרו את החבילה המתאימה לכם</h2>
+                <p>בין אם אתם מחפשים ליווי בסיסי, חוויה משולבת או חבילה מלאה, יש לנו את המסלול המושלם עבורכם. לכל אבן דרך בחיים התאמנו חבילות ייחודיות שיענו בדיוק על הצרכים שלכם.</p>
             </div>
             
-            <div id="premium-details" class="product-details">
-                <div class="product-content">
-                    <div class="product-text">
-                        <h3>מסלול פרימיום - ליווי אישי</h3>
-                        <p>מסלול הפרימיום מציע חוויית למידה משולבת - דיגיטלית ופרונטלית, עם ליווי צמוד והכנה מקיפה לאירוע המיוחד.</p>
-                        <ul class="features-list">
-                            <li><strong>5 מפגשים פרונטליים</strong> - שיעורים אישיים פנים מול פנים לתרגול, דיוק והעמקה.</li>
-                            <li><strong>אימון קול וטכניקות נשימה</strong> - לימוד טכניקות מקצועיות שיסייעו בהעברת הקריאה בביטחון ובבהירות.</li>
-                            <li><strong>הכנה לדרשה</strong> - עזרה בכתיבת ובהכנת הדרשה, כולל טיפים להופעה בפני קהל.</li>
-                            <li><strong>חזרה גנרלית בבית הכנסת</strong> - תרגול באווירה אמיתית להפחתת לחץ והתרגשות ביום האירוע.</li>
-                            <li><strong>ליווי ביום האירוע</strong> - נוכחות ותמיכה לאורך האירוע המיוחד.</li>
+            <!-- לשוניות -->
+            <div class="tabs">
+                <button class="tablink active" onclick="openTab('brit')">ברית מילה/בת</button>
+                <button class="tablink" onclick="openTab('bar-mitzvah')">בר/בת מצווה</button>
+                <button class="tablink" onclick="openTab('wedding')">חתונה</button>
+                <button class="tablink" onclick="openTab('other')">אירועים נוספים</button>
+            </div>
+            
+            <!-- תוכן לשוניות -->
+            <div id="brit" class="tabcontent active">
+                <div class="packages-grid">
+                    <div class="package-card">
+                        <h3>בייסיק</h3>
+                        <div class="price">₪1,200</div>
+                        <ul>
+                            <li>פיוטים מסורתיים בטקס הברית</li>
+                            <li>מקטעי שירה בקבלת הפנים</li>
+                            <li>התאמה למנהגי המשפחה</li>
+                            <li>פגישת תיאום ציפיות מקדימה</li>
+                            <li>שירת "ברוך הבא" מסורתית</li>
                         </ul>
-                        <p>מסלול הפרימיום הוא הבחירה המועדפת על רוב המשפחות, המשלב את הנוחות של למידה מרחוק עם היתרונות המשמעותיים של הדרכה אישית פנים מול פנים.</p>
-                        <a href="contact.html" class="btn">לפרטים נוספים</a>
+                        <a href="contact.html" class="btn">להזמנה</a>
                     </div>
-                    <div class="product-image">
-                        <img src="/api/placeholder/500/350" alt="ליווי אישי">
+                    <div class="package-card featured">
+                        <div class="popular-tag">פופולרי</div>
+                        <h3>פרימיום</h3>
+                        <div class="price">₪1,800</div>
+                        <ul>
+                            <li>כל מה שכלול בחבילת הבייסיק</li>
+                            <li>ליווי מוזיקלי בסעודת המצווה</li>
+                            <li>שירים מותאמים אישית למשפחה</li>
+                            <li>הכנת שיר מיוחד לכבוד הרך הנולד</li>
+                            <li>הדרכת הקהל בשירה משותפת</li>
+                        </ul>
+                        <a href="contact.html" class="btn">להזמנה</a>
                     </div>
+                    <div class="package-card">
+                        <h3>VIP</h3>
+                        <div class="price">₪2,500</div>
+                        <ul>
+                            <li>כל מה שכלול בחבילת הפרימיום</li>
+                            <li>ליווי מוזיקלי לברית יצחק (וואכנאכט)</li>
+                            <li>הקלטת שיר מיוחד למזכרת</li>
+                            <li>תפילה חגיגית בבוקר הברית</li>
+                            <li>פיוטים בסגנונות מגוונים לבחירתכם</li>
+                        </ul>
+                        <a href="contact.html" class="btn">להזמנה</a>
+                    </div>
+                </div>
+                
+                <div class="product-details">
+                    <h3>למה דווקא ליווי מוזיקלי לברית?</h3>
+                    <p>הברית היא הרגע הראשון בו התינוק/ת שלכם נכנס/ת לברית עם המסורת היהודית העתיקה. ליווי מוזיקלי מקצועי ומרגש הופך את הרגע הזה למשמעותי עוד יותר, ומעניק לאירוע אווירה חגיגית ומיוחדת.</p>
+                    
+                    <div class="highlight-box">
+                        <h3>פיוטים מסורתיים לברית</h3>
+                        <p>הפיוטים והשירים המסורתיים משקפים את העושר התרבותי והרוחני של המסורת היהודית. אנו מביאים את המסורת הזו בגישה מודרנית ומרגשת, המתאימה לכל סוגי הקהלים והעדות.</p>
+                    </div>
+                    
+                    <ul class="features-list">
+                        <li>פיוטים מסורתיים מכל העדות - ספרדים, אשכנזים, ותימנים</li>
+                        <li>התאמה אישית לאופי המשפחה והאירוע</li>
+                        <li>שילוב בין מסורת לחדשנות</li>
+                        <li>יצירת אווירה מרוממת ומשפחתית</li>
+                        <li>חוויה מוזיקלית בלתי נשכחת לכל האורחים</li>
+                    </ul>
                 </div>
             </div>
             
-            <div id="vip-details" class="product-details">
-                <div class="product-content">
-                    <div class="product-image">
-                        <img src="/api/placeholder/500/350" alt="שבת חתן">
-                    </div>
-                    <div class="product-text">
-                        <h3>מסלול VIP - שבת חתן מלאה</h3>
-                        <p>מסלול ה-VIP מציע את החוויה המלאה והמושלמת ביותר לשבת בר המצווה, עם חזנות מקצועית וליווי אישי לאורך כל השבת.</p>
-                        <ul class="features-list">
-                            <li><strong>חזנות מלאה בשבת</strong> - חזנות מסורתית ברמה הגבוהה ביותר שתרומם את אווירת השבת.</li>
-                            <li><strong>קבלת שבת וערבית חגיגית</strong> - פתיחת השבת באווירה מרוממת ומיוחדת.</li>
-                            <li><strong>תפילת שחרית ומוסף</strong> - חזנות מרגשת שתעניק למעמד בר המצווה את הכבוד הראוי.</li>
-                            <li><strong>הדרכה למשפחה</strong> - הכוונה והדרכה לכל בני המשפחה לאורך השבת.</li>
-                            <li><strong>שיתוף קהילתי</strong> - יצירת אווירה קהילתית מרגשת ומאחדת דרך התפילה והשירה.</li>
+            <div id="bar-mitzvah" class="tabcontent">
+                <div class="packages-grid">
+                    <div class="package-card">
+                        <h3>בייסיק</h3>
+                        <div class="price">₪1,500</div>
+                        <ul>
+                            <li>קורס דיגיטלי מלא לקריאת הפרשה</li>
+                            <li>חומרי לימוד מותאמים אישית</li>
+                            <li>תמיכה יומית בווטסאפ</li>
+                            <li>שיחות טלפון שבועיות</li>
+                            <li>הקלטות ותרגולים מובנים</li>
                         </ul>
-                        <p>מסלול ה-VIP מיועד למשפחות המעוניינות בחוויה מושלמת ומרגשת, שתהפוך את שבת בר המצווה לאירוע בלתי נשכח עבור כל המשתתפים.</p>
-                        <a href="contact.html" class="btn">לפרטים נוספים</a>
+                        <a href="contact.html" class="btn">להרשמה</a>
+                    </div>
+                    <div class="package-card featured">
+                        <div class="popular-tag">פופולרי</div>
+                        <h3>פרימיום</h3>
+                        <div class="price">₪3,000</div>
+                        <ul>
+                            <li>כל מה שכלול בחבילת הבייסיק</li>
+                            <li>5 מפגשים פרונטליים</li>
+                            <li>אימון קול וטכניקות נשימה</li>
+                            <li>הכנה לדרשה</li>
+                            <li>חזרה גנרלית בבית הכנסת</li>
+                            <li>ליווי צמוד ביום האירוע</li>
+                        </ul>
+                        <a href="contact.html" class="btn">להרשמה</a>
+                    </div>
+                    <div class="package-card">
+                        <h3>VIP</h3>
+                        <div class="price">₪5,000</div>
+                        <ul>
+                            <li>כל מה שכלול בחבילת הפרימיום</li>
+                            <li>הגעה לשבת חתן</li>
+                            <li>חזנות מלאה בשבת</li>
+                            <li>קבלת שבת וערבית חגיגית</li>
+                            <li>תפילת שחרית ומוסף</li>
+                            <li>הדרכה למשפחה לאורך כל השבת</li>
+                        </ul>
+                        <a href="contact.html" class="btn">להרשמה</a>
                     </div>
                 </div>
-            </div>
-        </section>
-    </main>
-    
-    <!-- פוטר -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>אבן דרך</h3>
-                <p>מלווים את חתן בר המצווה בדרך משמעותית ומעצימה אל עולם המצוות, בשילוב חוויה מוזיקלית ייחודית.</p>
-            </div>
-            <div class="footer-section">
-                <h3>קישורים מהירים</h3>
-                <ul class="footer-links">
-                    <li><a href="index.html">בית</a></li>
-                    <li><a href="index.html#services">שירותים</a></li>
-                    <li><a href="products.html">מוצרים</a></li>
-                    <li><a href="about.html">אודות</a></li>
-                    <li><a href="contact.html">צור קשר</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>צור קשר</h3>
-                <p>טלפון: 050-1234567</p>
-                <p>מייל: info@evenderechweb.co.il</p>
-                <div class="footer-social">
-                    <a href="#">פייסבוק</a>
-                    <a href="#">אינסטגרם</a>
-                    <a href="#">יוטיוב</a>
+                
+                <div class="product-details">
+                    <h3>מסע משמעותי אל בר/בת המצווה</h3>
+                    <p>בר/בת המצווה הם אבן דרך משמעותית בחיי כל נער/ה. זהו זמן של צמיחה, למידה וכניסה לעולם המצוות. אנו מלווים את התהליך הזה באופן מקיף ומשמעותי, מעבר ללימוד הטכני של קריאת התורה.</p>
+                    
+                    <div class="highlight-box">
+                        <h3>יותר מקריאה בתורה</h3>
+                        <p>התהליך שלנו מתמקד ביצירת חוויה חינוכית וערכית, המעניקה לחתן/כלת בר/בת המצווה הבנה עמוקה של המסורת והמשמעות של הטקסט, לצד מיומנויות קריאה מדויקות.</p>
+                    </div>
+                    
+                    <ul class="features-list">
+                        <li>התמקדות ביסודות ההגייה הנכונה</li>
+                        <li>בניית ביטחון הדרגתי דרך הצלחות קטנות</li>
+                        <li>הבנת המשמעות של המילים והפסוקים</li>
+                        <li>תרגול מדויק של הטעמים והמנגינה</li>
+                        <li>עבודה על ביטחון בעמידה מול קהל</li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2025 אבן דרך. כל הזכויות שמורות.</p>
-        </div>
-    </footer>
-</body>
-</html>
+            
+            <div id="wedding" class="tabcontent">
+                <div class="packages-grid">
+                    <div class="package-card">
+                        <h3>בייסיק</h3>
+                        <div class="price">₪1,800</div>
+                        <ul>
+                            <li>חזנות מסורתית לטקס החופה</li>
+                            <li>שירי כניסה לחופה</li>
+                            <li>ליווי מוזיקלי לשבע ברכות</li>
+                            <li>שירה בזמן החתימה על הכתובה</li>
+                            <li>פגישת תיאום ציפיות מקדימה</li>
+                        </ul>
+                        <a href="contact.html" class="btn">להזמנה</a>
+                    </div>
+                    <div class="package-card featured">
+                        <div class="popular-tag">פופולרי</div>
+                        <h3>פרימיום</h3>
+                        <div class="price">₪3,500</div>
+                        <ul>
+                            <li>כל מה שכלול בחבילת הבייסיק</li>
+                            <li>ליווי מוזיקלי לקבלת פנים</li>
+                            <li>שיר מיוחד מותאם אישית לזוג</li>
+                            <li>הדרכת הקהל בשירה משותפת</li>
+                            <li>ניגונים מיוחדים בשבע ברכות</li>
+                        </ul>
+                        <a href="contact.html
